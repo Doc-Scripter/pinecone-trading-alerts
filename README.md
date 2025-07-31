@@ -1,102 +1,184 @@
-# 📊 TradingView Pinecone Alerts to Discord/Telegram
+# 🎯 Pinecone Trading Alerts - Advanced Trading Signal System
 
-This project enables real-time TradingView and Deriv TradingView alerts (e.g., candlestick pattern detections, indicator triggers) to be sent to Discord or Telegram via bots. The system is designed for flexibility, supporting both platforms through webhooks and bot APIs.
-
----
-
-## 🚀 Features
-
-- ⏱ Real-time TradingView & Deriv alerts
-- 🕯 Candlestick pattern alerts (Doji, Engulfing, Hammer, etc.)
-- 📩 Discord bot integration (via Webhooks)
-- 💬 Telegram bot integration (via Bot API)
-- 🔁 Flexible alert routing logic
-- ✅ Pine Script examples included
-- 🔐 Secure API endpoints for alerts
+A comprehensive, production-ready system for receiving real-time trading signals from TradingView and Deriv platforms, processing them through intelligent routing, and delivering actionable alerts to Discord and Telegram via dedicated bots.
 
 ---
 
-## 📦 Architecture
+## 🚀 Advanced Features
 
-```text
-                +------------------+
-                | Pine Script Alert|
-                |  (TradingView)   |
-                +--------+---------+
-                         |
-                     HTTP Alert
-                         |
-                         v
-       +------------------------------+
-       | Flask Alert Receiver (API)  |
-       | Handles POST requests       |
-       +----+------------------+-----+
-            |                  |
-    Discord Webhook     Telegram Bot API
-        Handler               Handler
-            |                  |
-        Discord             Telegram
-        Channel             Group/DM
-## Folder structure
+- ⏱ **Real-time Processing**: Sub-second alert delivery from signal to notification
+- 🕯 **Advanced Pattern Detection**: 15+ candlestick patterns with confidence scoring
+- 📊 **Multi-Platform Support**: TradingView + Deriv integration
+- 🤖 **Dual Bot Architecture**: Discord + Telegram with intelligent routing
+- 🔍 **AI-Powered Classification**: Pattern recognition and signal strength analysis
+- 📈 **Rich Formatting**: Interactive charts, emoji indicators, and color-coded signals
+- 🔐 **Enterprise Security**: IP whitelisting, signature verification, rate limiting
+- 📊 **Comprehensive Monitoring**: Real-time metrics and performance dashboards
+- 🐳 **Production-Ready**: Docker, Kubernetes, and CI/CD pipeline support
 
-.
-├── README.md
-├── task.md
-├── pine_scripts/
-│   ├── candle_alerts.pine
-│   └── example_strategy.pine
-├── bot_server/
-│   ├── app.py
-│   ├── discord_bot.py
-│   ├── telegram_bot.py
-│   ├── .env.example
-│   └── requirements.txt
-└── docs/
-    ├── architecture.md
-    └── webhook_setup.md
-⚙️ Setup Instructions
-Clone Repository
+---
 
-bash
-Copy
-Edit
-git clone https://github.com/your-username/tradingview-pine-alerts.git
-cd tradingview-pine-alerts
-Install Python Dependencies
+## 🏗️ Advanced Architecture
 
-bash
-Copy
-Edit
-cd bot_server
-pip install -r requirements.txt
-Set Environment Variables
+### 🔄 Data Flow
+```mermaid
+graph TD
+    A[TradingView/Deriv Pine Script] -->|Webhook POST| B[Alert Gateway API]
+    A2[Pinecone Script Engine] -->|Enhanced JSON| B
+    B --> C{Alert Router}
+    C -->|Pattern Type| D[Pattern Classifier]
+    C -->|Priority| E[Queue Manager]
+    D --> F[Candle Pattern Handler]
+    D --> G[Indicator Handler]
+    D --> H[Custom Strategy Handler]
+    E --> I[Discord Bot Service]
+    E --> J[Telegram Bot Service]
+    E --> K[Multi-Channel Router]
+    I --> L[Discord Channels]
+    J --> M[Telegram Groups]
+    K --> N[Cross-Platform Broadcast]
+```
 
-Copy .env.example to .env
+### 📁 Comprehensive Project Structure
 
-Fill in:
+```
+pinecone-trading-alerts/
+├── 📁 pinecone_scripts/
+│   ├── 📁 tradingview/
+│   │   ├── 📁 candle_patterns/
+│   │   │   ├── engulfing_detector.pine
+│   │   │   ├── doji_scanner.pine
+│   │   │   ├── hammer_identification.pine
+│   │   │   ├── shooting_star.pine
+│   │   │   └── morning_evening_star.pine
+│   │   ├── 📁 indicators/
+│   │   │   ├── rsi_divergence.pine
+│   │   │   ├── macd_crossover.pine
+│   │   │   ├── bollinger_bands.pine
+│   │   │   └── volume_spike.pine
+│   │   └── 📁 strategies/
+│   │       ├── scalping_strategy.pine
+│   │       ├── swing_strategy.pine
+│   │       └── breakout_strategy.pine
+│   ├── 📁 deriv/
+│   │   ├── 📁 synthetic_indices/
+│   │   │   ├── volatility_alert.pine
+│   │   │   └── jump_index.pine
+│   │   └── 📁 forex/
+│   │       ├── major_pairs.pine
+│   │       └── exotic_pairs.pine
+│   └── 📁 shared/
+│       ├── alert_templates.pine
+│       └── webhook_formatter.pine
+├── 📁 alert_engine/
+│   ├── 📁 core/
+│   ├── 📁 routers/
+│   ├── 📁 handlers/
+│   └── 📁 config/
+├── 📁 bot_services/
+│   ├── 📁 discord/
+│   ├── 📁 telegram/
+│   └── 📁 shared/
+├── 📁 api_gateway/
+├── 📁 monitoring/
+├── 📁 deployment/
+├── 📁 tests/
+├── 📁 docs/
+└── 📁 scripts/
+```
+## ⚙️ Comprehensive Setup Guide
 
-DISCORD_WEBHOOK_URL
+### 🏁 Quick Start (Development)
 
-TELEGRAM_BOT_TOKEN
+```bash
+# Clone the repository
+git clone https://github.com/your-username/pinecone-trading-alerts.git
+cd pinecone-trading-alerts
 
-TELEGRAM_CHAT_ID
+# Setup development environment
+make setup-dev
 
-Run the Bot Server
+# Start all services with Docker
+make docker-up
 
-bash
-Copy
-Edit
-python app.py
-Setup Pine Script Alerts
+# Or run locally
+make run-local
+```
 
-Use example scripts in pine_scripts/
+### 🔧 Manual Setup
 
-Set alert to POST to your server endpoint:
+#### 1. Environment Configuration
+```bash
+# Copy environment template
+cp .env.example .env
 
-arduino
-Copy
-Edit
-https://your-server.com/api/alert
+# Edit .env with your credentials
+nano .env
+```
+
+#### 2. Required Environment Variables
+```bash
+# Core Configuration
+FLASK_ENV=development
+SECRET_KEY=your-secret-key-here
+REDIS_URL=redis://localhost:6379
+
+# Discord Configuration
+DISCORD_BOT_TOKEN=your-discord-bot-token
+DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/YOUR_WEBHOOK_URL
+DISCORD_ALERT_CHANNELS=trading-alerts,crypto-signals
+
+# Telegram Configuration
+TELEGRAM_BOT_TOKEN=your-telegram-bot-token
+TELEGRAM_CHAT_IDS=@your_channel,-1001234567890
+
+# TradingView/Deriv Configuration
+TRADINGVIEW_WEBHOOK_SECRET=your-webhook-secret
+DERIV_API_KEY=your-deriv-api-key
+ALLOWED_IPS=52.89.214.238,34.212.75.30,52.0.0.0/8
+
+# Rate Limiting
+RATE_LIMIT_PER_MINUTE=60
+BURST_LIMIT=10
+QUEUE_TIMEOUT=30
+```
+
+#### 3. Pine Script Setup
+
+##### TradingView Setup:
+1. Open TradingView → Pine Editor
+2. Load scripts from `pinecone_scripts/tradingview/`
+3. Set webhook URL: `https://your-server.com/api/v1/webhook/tradingview`
+4. Configure alert conditions with JSON payload
+
+##### Deriv Setup:
+1. Open Deriv → SmartTrader
+2. Load scripts from `pinecone_scripts/deriv/`
+3. Set webhook URL: `https://your-server.com/api/v1/webhook/deriv`
+4. Configure alert conditions
+
+### 🐳 Docker Deployment
+
+```bash
+# Build and start all services
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Scale services
+docker-compose up -d --scale discord_bot=3 --scale telegram_bot=2
+```
+
+### ☸️ Kubernetes Deployment
+
+```bash
+# Deploy to Kubernetes
+kubectl apply -f deployment/kubernetes/
+
+# Check deployment status
+kubectl get pods -l app=pinecone-alerts
+```
 🛡 Security
 Only accept POST requests from TradingView IPs (optionally validate headers)
 
