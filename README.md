@@ -1,28 +1,28 @@
-# 🎯 Pinecone Trading Alerts - Advanced Trading Signal System
+# Pinecone Trading Alerts - Advanced Trading Signal System
 
 A comprehensive, production-ready system for receiving real-time trading signals from TradingView and Deriv platforms, processing them through intelligent routing, and delivering actionable alerts to Discord and Telegram via dedicated bots.
 
 ---
 
-## 🚀 Advanced Features
+## Advanced Features
 
-- ⏱ **Real-time Processing**: Sub-second alert delivery from signal to notification
-- 🕯 **Advanced Pattern Detection**: 15+ candlestick patterns with confidence scoring
-- 📊 **Multi-Platform Support**: TradingView + Deriv integration
-- 🤖 **Dual Bot Architecture**: Discord + Telegram with intelligent routing
-- 🔍 **AI-Powered Classification**: Pattern recognition and signal strength analysis
-- 📰 **AI News Integration**: Real-time news sentiment analysis and market consensus
-- 🎯 **Smart Consensus Engine**: Combines technical signals with news sentiment for enhanced accuracy
-- 📈 **Rich Formatting**: Interactive charts, emoji indicators, and color-coded signals
-- 🔐 **Enterprise Security**: IP whitelisting, signature verification, rate limiting
-- 📊 **Comprehensive Monitoring**: Real-time metrics and performance dashboards
-- 🐳 **Production-Ready**: Docker, Kubernetes, and CI/CD pipeline support
+- **Real-time Processing**: Sub-second alert delivery from signal to notification
+- **Advanced Pattern Detection**: 15+ candlestick patterns with confidence scoring
+- **Multi-Platform Support**: TradingView + Deriv integration
+- **Dual Bot Architecture**: Discord + Telegram with intelligent routing
+- **AI-Powered Classification**: Pattern recognition and signal strength analysis
+- **AI News Integration**: Real-time news sentiment analysis and market consensus
+- **Smart Consensus Engine**: Combines technical signals with news sentiment for enhanced accuracy
+- **Rich Formatting**: Interactive charts, emoji indicators, and color-coded signals
+- **Enterprise Security**: IP whitelisting, signature verification, rate limiting
+- **Comprehensive Monitoring**: Real-time metrics and performance dashboards
+- **Production-Ready**: Docker, Kubernetes, and CI/CD pipeline support
 
 ---
 
-## 🏗️ Advanced Architecture
+##### Advanced Architecture
 
-### 🔄 Data Flow
+### Data Flow
 ```mermaid
 graph TD
     A[TradingView/Deriv Pine Script] -->|Webhook POST| B[Alert Gateway API]
@@ -46,7 +46,7 @@ graph TD
     K --> N[Cross-Platform Broadcast]
 ```
 
-### 📁 Comprehensive Project Structure
+### Comprehensive Project Structure
 
 ```
 pinecone-trading-alerts/
@@ -98,9 +98,9 @@ pinecone-trading-alerts/
 ├── 📁 docs/
 └── 📁 scripts/
 ```
-## ⚙️ Comprehensive Setup Guide
+## Comprehensive Setup Guide
 
-### 🏁 Quick Start (Development)
+### Quick Start (Development)
 
 ```bash
 # Clone the repository
@@ -117,7 +117,7 @@ make docker-up
 make run-local
 ```
 
-### 🔧 Manual Setup
+### Manual Setup
 
 #### 1. Environment Configuration
 ```bash
@@ -178,7 +178,7 @@ QUEUE_TIMEOUT=30
 3. Set webhook URL: `https://your-server.com/api/v1/webhook/deriv`
 4. Configure alert conditions
 
-### 🐳 Docker Deployment
+### Docker Deployment
 
 ```bash
 # Build and start all services
@@ -191,7 +191,7 @@ docker-compose logs -f
 docker-compose up -d --scale discord_bot=3 --scale telegram_bot=2
 ```
 
-### ☸️ Kubernetes Deployment
+### Kubernetes Deployment
 
 ```bash
 # Deploy to Kubernetes
@@ -200,12 +200,12 @@ kubectl apply -f deployment/kubernetes/
 # Check deployment status
 kubectl get pods -l app=pinecone-alerts
 ```
-🛡 Security
+Security
 Only accept POST requests from TradingView IPs (optionally validate headers)
 
 Rate-limit incoming alerts
 
-📮 Future Enhancements
+Future Enhancements
 UI Dashboard to manage and route alerts
 
 Multiple TradingView account support
@@ -214,7 +214,7 @@ Alert batching & scheduling
 
 Auto pattern classification using AI
 
-🙏 Contributions
+Contributions
 Pull requests are welcome. For major changes, open an issue first to discuss.
 
 
