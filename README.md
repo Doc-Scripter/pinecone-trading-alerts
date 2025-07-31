@@ -37,4 +37,81 @@ This project enables real-time TradingView and Deriv TradingView alerts (e.g., c
             |                  |
         Discord             Telegram
         Channel             Group/DM
+## Folder structure
+
+.
+├── README.md
+├── task.md
+├── pine_scripts/
+│   ├── candle_alerts.pine
+│   └── example_strategy.pine
+├── bot_server/
+│   ├── app.py
+│   ├── discord_bot.py
+│   ├── telegram_bot.py
+│   ├── .env.example
+│   └── requirements.txt
+└── docs/
+    ├── architecture.md
+    └── webhook_setup.md
+⚙️ Setup Instructions
+Clone Repository
+
+bash
+Copy
+Edit
+git clone https://github.com/your-username/tradingview-pine-alerts.git
+cd tradingview-pine-alerts
+Install Python Dependencies
+
+bash
+Copy
+Edit
+cd bot_server
+pip install -r requirements.txt
+Set Environment Variables
+
+Copy .env.example to .env
+
+Fill in:
+
+DISCORD_WEBHOOK_URL
+
+TELEGRAM_BOT_TOKEN
+
+TELEGRAM_CHAT_ID
+
+Run the Bot Server
+
+bash
+Copy
+Edit
+python app.py
+Setup Pine Script Alerts
+
+Use example scripts in pine_scripts/
+
+Set alert to POST to your server endpoint:
+
+arduino
+Copy
+Edit
+https://your-server.com/api/alert
+🛡 Security
+Only accept POST requests from TradingView IPs (optionally validate headers)
+
+Rate-limit incoming alerts
+
+📮 Future Enhancements
+UI Dashboard to manage and route alerts
+
+Multiple TradingView account support
+
+Alert batching & scheduling
+
+Auto pattern classification using AI
+
+🙏 Contributions
+Pull requests are welcome. For major changes, open an issue first to discuss.
+
 
