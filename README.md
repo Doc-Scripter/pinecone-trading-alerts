@@ -11,6 +11,8 @@ A comprehensive, production-ready system for receiving real-time trading signals
 - 📊 **Multi-Platform Support**: TradingView + Deriv integration
 - 🤖 **Dual Bot Architecture**: Discord + Telegram with intelligent routing
 - 🔍 **AI-Powered Classification**: Pattern recognition and signal strength analysis
+- 📰 **AI News Integration**: Real-time news sentiment analysis and market consensus
+- 🎯 **Smart Consensus Engine**: Combines technical signals with news sentiment for enhanced accuracy
 - 📈 **Rich Formatting**: Interactive charts, emoji indicators, and color-coded signals
 - 🔐 **Enterprise Security**: IP whitelisting, signature verification, rate limiting
 - 📊 **Comprehensive Monitoring**: Real-time metrics and performance dashboards
@@ -31,6 +33,11 @@ graph TD
     D --> F[Candle Pattern Handler]
     D --> G[Indicator Handler]
     D --> H[Custom Strategy Handler]
+    D --> AI[AI News Analyzer]
+    AI -->|News Sentiment| D2[Consensus Calculator]
+    AI -->|Market Impact| D3[Impact Assessment]
+    D2 --> E
+    D3 --> E
     E --> I[Discord Bot Service]
     E --> J[Telegram Bot Service]
     E --> K[Multi-Channel Router]
@@ -75,6 +82,11 @@ pinecone-trading-alerts/
 │   ├── 📁 routers/
 │   ├── 📁 handlers/
 │   └── 📁 config/
+├── 📁 ai_services/
+│   ├── 📁 news_analyzer/
+│   ├── 📁 models/
+│   ├── 📁 data_sources/
+│   └── 📁 cache/
 ├── 📁 bot_services/
 │   ├── 📁 discord/
 │   ├── 📁 telegram/
@@ -136,6 +148,15 @@ TELEGRAM_CHAT_IDS=@your_channel,-1001234567890
 TRADINGVIEW_WEBHOOK_SECRET=your-webhook-secret
 DERIV_API_KEY=your-deriv-api-key
 ALLOWED_IPS=52.89.214.238,34.212.75.30,52.0.0.0/8
+
+# AI News Integration
+NEWS_API_KEY=your-news-api-key
+ALPHA_VANTAGE_API_KEY=your-alpha-vantage-key
+CRYPTOPANIC_API_KEY=your-cryptopanic-key
+TWITTER_BEARER_TOKEN=your-twitter-bearer-token
+SENTIMENT_CACHE_TTL=300
+NEWS_FETCH_TIMEOUT=10
+ENABLE_NEWS_ANALYSIS=true
 
 # Rate Limiting
 RATE_LIMIT_PER_MINUTE=60
