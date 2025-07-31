@@ -1,4 +1,4 @@
-# 🎯 Pinecone Trading Alerts - Development Makefile
+# Pinecone Trading Alerts - Development Makefile
 
 .PHONY: help setup-dev docker-up docker-down run-local test test-integration lint format logs clean deploy-prod
 
@@ -14,7 +14,7 @@ NC := \033[0m # No Color
 
 ## Display this help message
 help:
-	@echo "$(BLUE)🎯 Pinecone Trading Alerts - Development Commands$(NC)"
+	@echo "$(BLUE)Pinecone Trading Alerts - Development Commands$(NC)"
 	@echo ""
 	@echo "$(GREEN)Setup & Development:$(NC)"
 	@echo "  $(YELLOW)make setup-dev$(NC)     - Setup development environment"
@@ -40,7 +40,7 @@ help:
 
 ## Setup development environment
 setup-dev:
-	@echo "$(BLUE)🔧 Setting up development environment...$(NC)"
+	@echo "$(BLUE)Setting up development environment...$(NC)"
 	@python3 -m venv venv
 	@./venv/bin/pip install --upgrade pip
 	@./venv/bin/pip install -r requirements.txt
@@ -50,7 +50,7 @@ setup-dev:
 
 ## Start all services with Docker
 docker-up:
-	@echo "$(BLUE)🐳 Starting Docker services...$(NC)"
+	@echo "$(BLUE)Starting Docker services...$(NC)"
 	@docker-compose up -d
 	@echo "$(GREEN)✅ Services started!$(NC)"
 	@echo "$(YELLOW)View logs: make logs$(NC)"
@@ -68,7 +68,7 @@ run-local:
 
 ## Run unit tests
 test:
-	@echo "$(BLUE)🧪 Running unit tests...$(NC)"
+	@echo "$(BLUE)Running unit tests...$(NC)"
 	@source venv/bin/activate && pytest tests/unit -v
 
 ## Run integration tests
@@ -78,7 +78,7 @@ test-integration:
 
 ## Run end-to-end tests
 test-e2e:
-	@echo "$(BLUE)🎯 Running end-to-end tests...$(NC)"
+	@echo "$(BLUE)Running end-to-end tests...$(NC)"
 	@source venv/bin/activate && pytest tests/e2e -v
 
 ## Run all tests
@@ -103,7 +103,7 @@ type-check:
 
 ## View logs from all services
 logs:
-	@echo "$(BLUE)📋 Viewing logs...$(NC)"
+	@echo "$(BLUE)Viewing logs...$(NC)"
 	@docker-compose logs -f --tail=100
 
 ## Clean up containers and volumes
@@ -115,7 +115,7 @@ clean:
 
 ## Deploy to production
 deploy-prod:
-	@echo "$(BLUE)🚀 Deploying to production...$(NC)"
+	@echo "$(BLUE)Deploying to production...$(NC)"
 	@./scripts/deploy.sh
 
 ## Development shortcuts
@@ -125,15 +125,15 @@ full-check: lint type-check test
 
 ## Database operations
 db-init:
-	@echo "$(BLUE)🗄️ Initializing database...$(NC)"
+	@echo "$(BLUE)Initializing database...$(NC)"
 	@source venv/bin/activate && python -m alert_engine.database init
 
 db-migrate:
-	@echo "$(BLUE)🔄 Running database migrations...$(NC)"
+	@echo "$(BLUE)Running database migrations...$(NC)"
 	@source venv/bin/activate && python -m alert_engine.database migrate
 
 db-reset:
-	@echo "$(BLUE)🔄 Resetting database...$(NC)"
+	@echo "$(BLUE)Resetting database...$(NC)"
 	@source venv/bin/activate && python -m alert_engine.database reset
 
 ## Redis operations
@@ -149,7 +149,7 @@ health-check:
 
 ## Security scan
 security-scan:
-	@echo "$(BLUE)🔐 Running security scan...$(NC)"
+	@echo "$(BLUE)Running security scan...$(NC)"
 	@source venv/bin/activate && bandit -r alert_engine/ bot_services/
 	@source venv/bin/activate && safety check
 
