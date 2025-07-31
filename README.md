@@ -200,21 +200,17 @@ kubectl apply -f deployment/kubernetes/
 # Check deployment status
 kubectl get pods -l app=pinecone-alerts
 ```
-Security
-Only accept POST requests from TradingView IPs (optionally validate headers)
+## Security Configuration
+- Only accept POST requests from TradingView IPs (optionally validate headers)
+- Rate-limit incoming alerts
 
-Rate-limit incoming alerts
+## Future Enhancements
+- UI Dashboard to manage and route alerts
+- Multiple TradingView account support
+- Alert batching & scheduling
+- Auto pattern classification using AI
 
-Future Enhancements
-UI Dashboard to manage and route alerts
-
-Multiple TradingView account support
-
-Alert batching & scheduling
-
-Auto pattern classification using AI
-
-Contributions
+## Contributions
 Pull requests are welcome. For major changes, open an issue first to discuss.
 
 
